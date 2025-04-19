@@ -30,8 +30,6 @@ const ChildrenSelect: React.FC<Props> = ({
     [category.items, search]
   );
 
-  console.log(category);
-
   const isAllSelected = useMemo(() => {
     return (
       selectedItem.includes(category.name) ||
