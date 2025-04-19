@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { Category } from "../types/types";
 import ChildrenSelectOption from "./ChildrenSelectOption";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -20,10 +20,17 @@ const ChildrenSelect: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(category.matchInItems);
 
+  useEffect(() => {
+    setIsOpen(category.matchInItems)
+  }, [category.matchInItems])
+
+
   const filteredItems = useMemo(
     () => filterItems(category.items, search),
     [category.items, search]
   );
+
+  console.log(category);
 
   const isAllSelected = useMemo(() => {
     return (
